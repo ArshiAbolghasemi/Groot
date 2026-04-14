@@ -1,12 +1,49 @@
 [project]
-name = "groot"
+name = "groot-chatbot"
 version = "0.1.0"
-description = "LLM chatbot with Wikipedia search tool, political guardrails, and prompt analytics using NER and topic classification with stored metadata for analysis."
+description = "Production-style LangGraph chatbot with Wikipedia tool, analytics, and PostgreSQL persistence"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+  "langgraph>=0.2.60",
+  "langchain>=0.3.0",
+  "langchain-openai>=0.2.0",
+  "langchain-community>=0.3.0",
+  "openai>=1.50.0",
+  "sqlalchemy>=2.0.35",
+  "psycopg[binary]>=3.2.3",
+  "pydantic>=2.9.2",
+  "dynaconf>=3.2.6",
+  "httpx>=0.27.2",
+  "tenacity>=9.0.0",
+]
 
 [project.optional-dependencies]
 dev = [
-    "ruff==0.15.10",
+  "ruff>=0.6.9",
 ]
+
+[project.scripts]
+groot-chat = "main:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N"]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
