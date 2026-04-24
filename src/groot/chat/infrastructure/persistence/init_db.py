@@ -7,5 +7,7 @@ logger = logging.getLogger(__name__)
 
 
 def init_db() -> None:
-    logger.info("Initializing database schema")
+    """Initialize database tables."""
+    logger.info("Initializing database tables")
     Base.metadata.create_all(bind=engine)
+    logger.info("Database tables initialized successfully")
