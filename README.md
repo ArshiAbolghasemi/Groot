@@ -1,6 +1,6 @@
 # Groot Chatbot
 
-A production-ready LangGraph chatbot with guardrails, Wikipedia search, streaming responses, parallel NER processing, and PostgreSQL persistence.
+A LangGraph chatbot with guardrails, Wikipedia search, streaming responses, parallel NER processing, and PostgreSQL persistence.
 
 ## Overview
 
