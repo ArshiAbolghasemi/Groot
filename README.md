@@ -245,3 +245,9 @@ docker-compose up -d
 cp .env.example .env
 # Edit .env and add your configurations
 ```
+
+6. Run chatbot
+
+```bash
+uv run python -m main
+```
