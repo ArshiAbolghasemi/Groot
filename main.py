@@ -34,7 +34,7 @@ async def run_cli() -> None:
             question = ui.get_input()
 
             if question.lower() in {"exit", "quit"}:
-                ui.print_info("Goodbye! 👋")
+                ui.print_info("Goodbye!")
                 break
 
             if question.lower() == "logs":
@@ -66,7 +66,7 @@ async def run_cli() -> None:
         except KeyboardInterrupt:
             ui.print_info("\nInterrupted. Type 'exit' to quit or continue chatting.")
         except EOFError:
-            ui.print_info("\nGoodbye! 👋")
+            ui.print_info("\nGoodbye!")
             break
         except Exception as e:
             ui.print_error(f"Unexpected error: {str(e)}")

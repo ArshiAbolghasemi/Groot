@@ -20,7 +20,7 @@ class TerminalUI:
 
     def print_header(self):
         """Print the header once at startup."""
-        header = Text("🌳 Groot Chatbot", style="bold cyan", justify="center")
+        header = Text("Groot Chatbot", style="bold cyan", justify="center")
         self.console.print(Panel(header, style="bold blue"))
         self.console.print()
 
