@@ -4,10 +4,10 @@ from typing import Any
 from langchain.agents import create_agent
 from langchain_core.messages import HumanMessage
 
-from groot.chat.infrastructure.llm.client import build_chat_model
-from groot.chat.infrastructure.tools.wikipedia import wikipedia_search
-from groot.chat.orchestration.state import GraphState
-from groot.shared.config.settings import settings
+from chat.infrastructure.llm.client import build_chat_model
+from chat.infrastructure.tools.wikipedia import wikipedia_search
+from chat.orchestration.state import GraphState
+from shared.config.settings import settings
 
 logger = logging.getLogger(__name__)
 

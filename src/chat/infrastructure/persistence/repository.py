@@ -2,7 +2,7 @@ import logging
 
 from sqlalchemy.orm import Session
 
-from groot.chat.infrastructure.persistence.models import ChatRecord
+from chat.infrastructure.persistence.models import ChatRecord
 
 logger = logging.getLogger(__name__)
 

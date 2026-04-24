@@ -3,7 +3,7 @@ import logging
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
-from groot.shared.config.settings import settings
+from shared.config.settings import settings
 
 logger = logging.getLogger(__name__)
 

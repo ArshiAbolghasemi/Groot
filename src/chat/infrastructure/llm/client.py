@@ -14,8 +14,8 @@ from tenacity import (
     wait_exponential,
 )
 
-from groot.chat.infrastructure.llm.error import PartialStreamError
-from groot.shared.config.settings import settings
+from chat.infrastructure.llm.error import PartialStreamError
+from shared.config.settings import settings
 
 logger = logging.getLogger(__name__)
 

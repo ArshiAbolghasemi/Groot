@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import JSON, Boolean, DateTime, Text, func
 from sqlalchemy.orm import Mapped, mapped_column
 
-from groot.chat.infrastructure.persistence.base import Base
+from chat.infrastructure.persistence.base import Base
 
 
 class ChatRecord(Base):

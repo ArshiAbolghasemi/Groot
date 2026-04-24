@@ -12,7 +12,7 @@ from tenacity import (
     wait_exponential,
 )
 
-from groot.shared.config.settings import settings
+from shared.config.settings import settings
 
 logger = logging.getLogger(__name__)
 

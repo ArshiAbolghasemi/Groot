@@ -3,8 +3,8 @@ import logging
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.state import CompiledStateGraph
 
-from groot.chat.orchestration.nodes import agent, blocked, guardrail, ner
-from groot.chat.orchestration.state import GraphState
+from chat.orchestration.nodes import agent, blocked, guardrail, ner
+from chat.orchestration.state import GraphState
 
 logger = logging.getLogger(__name__)
 

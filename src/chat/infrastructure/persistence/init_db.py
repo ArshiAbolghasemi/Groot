@@ -1,7 +1,7 @@
 import logging
 
-from groot.chat.infrastructure.persistence.base import Base
-from groot.chat.infrastructure.persistence.session import engine
+from chat.infrastructure.persistence.base import Base
+from chat.infrastructure.persistence.session import engine
 
 logger = logging.getLogger(__name__)
 

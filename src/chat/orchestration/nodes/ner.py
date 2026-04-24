@@ -4,9 +4,9 @@ from typing import Any
 
 from langchain_core.prompts import ChatPromptTemplate
 
-from groot.chat.infrastructure.llm.client import build_chat_model, llm_call
-from groot.chat.orchestration.state import GraphState
-from groot.shared.config.settings import settings
+from chat.infrastructure.llm.client import build_chat_model, llm_call
+from chat.orchestration.state import GraphState
+from shared.config.settings import settings
 
 logger = logging.getLogger(__name__)
 
