@@ -93,6 +93,12 @@ class Settings:
         return int(_dynaconf_settings.get("WIKIPEDIA_SEARCH_RESULT_LIMIT", 5))
 
     @property
+    def wikipedia_user_agent(self) -> str:
+        return _dynaconf_settings.get(
+            "WIKIPEDIA_USER_AGENT", "Groot/1.0 (arshiabolghasemi@gmail.com)"
+        )
+
+    @property
     def guardrail_prompt(self) -> str:
         return _dynaconf_settings.get(
             "GUARDRAIL_PROMPT",

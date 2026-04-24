@@ -50,7 +50,9 @@ def _search_wikipedia(query: str) -> list[dict[str, Any]]:
         "proxy": settings.wikipedia_proxy_url,
     }
 
-    with httpx.Client(**client_kwargs) as client:
+    with httpx.Client(
+        **client_kwargs, headers={"User-Agent": settings.wikipedia_user_agent}
+    ) as client:
         response = client.get(settings.wikipedia_search_url, params=params)
         response.raise_for_status()
         payload = response.json()
