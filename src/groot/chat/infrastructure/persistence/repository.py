@@ -17,12 +17,14 @@ class ChatRepository:
         question: str,
         answer: str,
         refusal: bool,
+        entities: list[dict[str, str]] | None = None,
     ) -> ChatRecord:
         logger.info("Persisting chatbot interaction")
         record = ChatRecord(
             question=question,
             answer=answer,
             refusal=refusal,
+            entities=entities,
         )
         try:
             self.session.add(record)
