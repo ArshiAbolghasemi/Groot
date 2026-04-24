@@ -177,24 +177,6 @@ sequenceDiagram
 
 Named Entity Recognition runs in parallel with guardrail:
 
-```mermaid
-graph TB
-    START[Question] --> PS[Parallel Start]
-    PS --> GR[Guardrail<br/>500ms]
-    PS --> NER[NER<br/>800ms]
-    GR --> NEXT[Next Step]
-    NER --> NEXT
-
-    style GR fill:#e1f5ff
-    style NER fill:#e1f5ff
-```
-
-**Entity Types:**
-- PERSON (e.g., "Albert Einstein")
-- LOCATION (e.g., "France", "Paris")
-- ORGANIZATION (e.g., "Microsoft", "NASA")
-- DATE (e.g., "2024", "January")
-- OTHER (anything else)
 
 ### 5. PostgreSQL Persistence
 
