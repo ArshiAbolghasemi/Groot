@@ -2,7 +2,7 @@ import logging
 from typing import Any
 
 from langchain.agents import create_agent
-from langchain_core.messages import HumanMessage
+from langchain_core.messages import AIMessageChunk, HumanMessage
 
 from chat.infrastructure.llm.client import build_chat_model
 from chat.infrastructure.tools.wikipedia import wikipedia_search
@@ -47,3 +47,25 @@ def node(state: GraphState) -> dict[str, Any]:
         "messages": response["messages"],
         "final_answer": final_answer,
     }
+
+
+async def stream_node(state: GraphState):
+    """Stream agent responses token by token."""
+    question = state["question"]
+    messages = state.get("messages", [])
+
+    if not messages or messages[-1].content != question:
+        messages = [HumanMessage(content=question)]
+
+    logger.info("Streaming agent response for question: %s", question)
+
+    async for event in _get_agent().astream_events(
+        {"messages": messages},
+        version="v2",
+    ):
+        kind = event["event"]
+
+        if kind == "on_chat_model_stream":
+            chunk = event.get("data", {}).get("chunk")
+            if isinstance(chunk, AIMessageChunk) and chunk.content:
+                yield {"stream_chunk": chunk.content}
