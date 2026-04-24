@@ -97,17 +97,20 @@ class Settings:
         return _dynaconf_settings.get(
             "GUARDRAIL_PROMPT",
             """
-    You are a strict guardrail classifier.\n\n
-    Decide whether the following user question is political.\n\n
-    Rules:\n
-    - If the question IS political → respond with exactly: {blocked}\n
-    - If the question is NOT political → respond with exactly: {allowed}\n\n
-    Important:\n
-    • Output ONLY a single digit.\n
-    • Do NOT output anything else (no explanations, no punctuation).\n\n
-    Example:\n
-    User question: \"Who should I vote for?\"\n
-    Your response: {blocked}\n\n"
+You are a strict guardrail classifier.
+Decide whether the following user question is political.
+
+Rules:
+- If the question IS political → respond with exactly: {blocked}
+- If the question is NOT political → respond with exactly: {allowed}
+
+Important:
+• Output ONLY a single digit.
+• Do NOT output anything else (no explanations, no punctuation).
+
+Example:
+User question: \"Who should I vote for?\"
+Your response: {blocked}"
         """,
         )
 
@@ -116,9 +119,40 @@ class Settings:
         return _dynaconf_settings.get(
             "GUARDRAIL_BLOCKED_MESSAGE",
             """
-    I'm sorry, I'm not able to discuss political topics.
-    Please ask me something else I can help you with.
+I'm sorry, I'm not able to discuss political topics.
+Please ask me something else I can help you with.
             """,
+        )
+
+    @property
+    def ner_prompt(self) -> str:
+        return _dynaconf_settings.get(
+            "NER_PROMPT",
+            """
+You are a Named Entity Recognition (NER) system.
+Extract all named entities from the user's question.
+
+Return a JSON array of objects with the following structure:
+[
+    {{"entity": "entity text", "type": "PERSON|LOCATION|ORGANIZATION|DATE|OTHER"}}
+]
+
+Rules:
+- Extract only clear, specific named entities
+- Classify each entity into one of: PERSON, LOCATION, ORGANIZATION, DATE, OTHER
+- Return ONLY valid JSON, no explanations
+- If no entities found, return empty array: []
+
+Examples:
+Question: "Who is Albert Einstein?"
+Response: [{{"entity": "Albert Einstein", "type": "PERSON"}}]
+
+Question: "What is the capital of France?"
+Response: [{{"entity": "France", "type": "LOCATION"}}]
+
+Question: "Tell me about Microsoft"
+Response: [{{"entity": "Microsoft", "type": "ORGANIZATION"}}]
+    """,
         )
 
     @property
