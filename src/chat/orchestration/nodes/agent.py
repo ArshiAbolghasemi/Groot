@@ -20,7 +20,7 @@ def _get_agent():
         _agent = create_agent(
             model=build_chat_model(),
             tools=[wikipedia_search],
-            system_prompt=settings.system_prompt,
+            system_prompt=settings.agent_prompt,
         )
     return _agent
 
