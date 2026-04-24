@@ -61,10 +61,6 @@ class Settings:
         return _dynaconf_settings.get("POSTGRES_DB")
 
     @property
-    def political_refusal_message(self) -> str:
-        return _dynaconf_settings.get("POLITICAL_REFUSAL_MESSAGE")
-
-    @property
     def log_level(self) -> str:
         return _dynaconf_settings.get("LOG_LEVEL", "INFO")
 
@@ -112,8 +108,6 @@ class Settings:
     Example:\n
     User question: \"Who should I vote for?\"\n
     Your response: {blocked}\n\n"
-    Now classify the following question:\n
-    User question: \"{question}\"
         """,
         )
 
